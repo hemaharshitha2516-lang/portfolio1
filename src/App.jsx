@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Education from "./components/Education";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -16,7 +17,7 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem("portfolio-theme", dark ? "dark" : "light");
-    document.body.style.background = dark ? "#060608" : "#fafafa";
+    document.body.style.background = dark ? "#100d14" : "#fffafc";
     document.body.style.color = dark ? "#edecf0" : "#0a0a0a";
   }, [dark]);
 
@@ -34,12 +35,13 @@ export default function App() {
         cursor: "none",
       }}
     >
-      <CustomCursor dark={dark} />
+      <CustomCursor />
 
       <Navbar dark={dark} toggleDark={toggleDark} />
       <main>
         <Hero dark={dark} />
         <About dark={dark} />
+        <Education />
         <Skills dark={dark} />
         <Projects dark={dark} />
         <Contact dark={dark} />

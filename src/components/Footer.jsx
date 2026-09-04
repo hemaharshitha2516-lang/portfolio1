@@ -42,16 +42,16 @@ export default function Footer() {
             className="font-cal"
             style={{ fontSize: "15px", fontWeight: 600, color: "var(--text)" }}
           >
-            eda<span className="grad-text">dev</span>
+            Hema <span className="grad-text">Harshitha</span>
           </span>
         </div>
 
         <p style={{ fontSize: "12px", color: "var(--text-3)" }}>
-          © {year} Eda Yavuz — Built with React & Framer Motion
+          © {year} Hema Harshitha Reddy Puli — Built with React & Framer Motion
         </p>
 
-        <div style={{ display: "flex", gap: "20px" }}>
-          {["Home", "About", "Skills", "Projects", "Contact"].map((link) => (
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+          {["Home", "About", "Education", "Skills", "Projects", "Contact"].map((link) => (
             <motion.a
               key={link}
               href={`#${link.toLowerCase()}`}

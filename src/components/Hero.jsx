@@ -2,18 +2,14 @@ import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 const floatingCards = [
-  { icon: "⚡", label: "React Expert", sub: "1+ years", color: "#8b5cf6" },
-  { icon: "📧", label: "Email Dev", sub: "MJML & HTML", color: "#ec4899" },
-  { icon: "🎨", label: "UI/UX Focused", sub: "Figma & CSS", color: "#06b6d4" },
-  { icon: "🚀", label: "10+ Projects", sub: "Deployed live", color: "#10b981" },
+  { icon: "</>", label: "Computer Science", sub: "2nd Year Student", color: "#a78bfa" },
+  { icon: "{ }", label: "Currently learning", sub: "Python Full Stack · Java", color: "#ec4899" },
 ];
 
 function FloatingCard({ card, index, dark }) {
   const positions = [
-    { top: "4%", right: "-22%" },
-    { top: "38%", right: "-28%" },
-    { bottom: "34%", left: "-22%" },
-    { bottom: "4%", right: "-18%" },
+    { top: "-28px", left: "-20px" },
+    { bottom: "-24px", right: "-20px" },
   ];
   const pos = positions[index];
 
@@ -32,7 +28,7 @@ function FloatingCard({ card, index, dark }) {
         ...pos,
         padding: "10px 14px",
         borderRadius: "14px",
-        background: dark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.85)",
+        background: dark ? "rgba(30,22,36,0.94)" : "rgba(255,250,252,0.96)",
         backdropFilter: "blur(20px)",
         border: dark
           ? "1px solid rgba(255,255,255,0.12)"
@@ -78,7 +74,7 @@ function FloatingCard({ card, index, dark }) {
         <div
           style={{
             fontSize: "10px",
-            color: dark ? "rgba(237,236,240,0.45)" : "rgba(10,10,10,0.45)",
+            color: dark ? "rgba(237,236,240,0.75)" : "rgba(10,10,10,0.7)",
             marginTop: "1px",
           }}
         >
@@ -105,18 +101,19 @@ export default function Hero({ dark }) {
     };
     window.addEventListener("mousemove", handler);
     return () => window.removeEventListener("mousemove", handler);
-  }, []);
+  }, [mouseX, mouseY]);
 
   const textColor = dark ? "#edecf0" : "#0a0a0a";
-  const mutedColor = dark ? "rgba(237,236,240,0.5)" : "rgba(10,10,10,0.5)";
+  const mutedColor = "var(--text-2)";
   const borderColor = dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)";
-  const cardBg = dark ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.8)";
+  
 
-  const words = ["Frontend", "Developer", "&", "Email", "Template", "Expert"];
+  const words = ["Hi,", "I’m", "Hema", "Harshitha"];
 
   return (
     <section
       id="home"
+      className="hero"
       ref={containerRef}
       style={{
         minHeight: "100vh",
@@ -195,8 +192,8 @@ export default function Hero({ dark }) {
               gap: "8px",
               padding: "6px 14px",
               borderRadius: "100px",
-              background: "rgba(16,185,129,0.08)",
-              border: "1px solid rgba(16,185,129,0.2)",
+              background: "rgba(192,132,190,0.08)",
+              border: "1px solid rgba(192,132,190,0.2)",
               marginBottom: "28px",
             }}
           >
@@ -206,7 +203,7 @@ export default function Hero({ dark }) {
                 width: "7px",
                 height: "7px",
                 borderRadius: "50%",
-                background: "#10b981",
+                background: "var(--purple)",
                 display: "inline-block",
               }}
             />
@@ -214,12 +211,12 @@ export default function Hero({ dark }) {
               style={{
                 fontSize: "11px",
                 fontWeight: 600,
-                color: "#10b981",
+                color: "var(--purple)",
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
               }}
             >
-              Available for freelance & full-time
+              Learning, building, growing
             </span>
           </motion.div>
 
@@ -235,12 +232,10 @@ export default function Hero({ dark }) {
               letterSpacing: "0.04em",
             }}
           >
-            Hi, I'm{" "}
-            <span style={{ color: textColor, fontWeight: 600 }}>Eda Yavuz</span>{" "}
-            👋
+            Ongole, Andhra Pradesh, India
           </motion.p>
 
-          <div style={{ marginBottom: "24px" }}>
+          <h1 style={{ marginBottom: "24px" }}>
             {words.map((word, i) => (
               <motion.span
                 key={word + i}
@@ -260,27 +255,27 @@ export default function Hero({ dark }) {
                   lineHeight: 1.1,
                   letterSpacing: "-0.03em",
                   color:
-                    word === "Frontend" || word === "Email"
+                    word === "Hema" || word === "Harshitha"
                       ? "transparent"
                       : textColor,
                   background:
-                    word === "Frontend" || word === "Email"
-                      ? "linear-gradient(135deg,#8b5cf6,#ec4899)"
+                    word === "Hema" || word === "Harshitha"
+                      ? "linear-gradient(135deg,#7843b6,#b53279)"
                       : "none",
                   WebkitBackgroundClip:
-                    word === "Frontend" || word === "Email" ? "text" : "unset",
+                    word === "Hema" || word === "Harshitha" ? "text" : "unset",
                   WebkitTextFillColor:
-                    word === "Frontend" || word === "Email"
+                    word === "Hema" || word === "Harshitha"
                       ? "transparent"
                       : "unset",
                   backgroundClip:
-                    word === "Frontend" || word === "Email" ? "text" : "unset",
+                    word === "Hema" || word === "Harshitha" ? "text" : "unset",
                 }}
               >
                 {word}
               </motion.span>
             ))}
-          </div>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -295,15 +290,10 @@ export default function Hero({ dark }) {
               marginBottom: "36px",
             }}
           >
-            I build clean, pixel-perfect web interfaces with{" "}
-            <strong style={{ color: textColor, fontWeight: 500 }}>
-              React & Tailwind CSS
+            <strong className="hero-role" style={{ color: textColor, fontWeight: 500 }}>
+              Computer Science Student &amp; Aspiring Software Engineer
             </strong>
-            , and craft high-converting email templates with{" "}
-            <strong style={{ color: textColor, fontWeight: 500 }}>
-              MJML & HTML
-            </strong>
-            . I don't just write code — I engineer solutions.
+            I’m a second-year Computer Science student who enjoys building interactive applications and exploring software engineering, artificial intelligence, and web development. I’m currently strengthening my skills in Python full-stack development and Java through hands-on projects.
           </motion.p>
 
           <motion.div
@@ -324,7 +314,7 @@ export default function Hero({ dark }) {
               style={{
                 padding: "13px 28px",
                 borderRadius: "12px",
-                background: "linear-gradient(135deg,#8b5cf6,#ec4899)",
+                background: "linear-gradient(135deg,#7843b6,#b53279)",
                 color: "white",
                 fontSize: "14px",
                 fontWeight: 600,
@@ -361,25 +351,26 @@ export default function Hero({ dark }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            style={{ display: "flex", alignItems: "center", gap: "12px" }}
+            className="hero-socials"
+            style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}
           >
             {[
               {
-                href: "https://github.com/edayavuz6",
+                href: "https://github.com/hemaharshitha2516-lang",
                 title: "GitHub",
                 d: (
                   <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                 ),
               },
               {
-                href: "https://www.linkedin.com/in/eda-yavuz-646011377/",
+                href: "https://www.linkedin.com/in/hema-harshitha-reddy-puli-446b67433/",
                 title: "LinkedIn",
                 d: (
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 ),
               },
               {
-                href: "mailto:edayavuzcontact@gmail.com",
+                href: "mailto:hemaharshitha2516@gmail.com",
                 title: "Email",
                 d: (
                   <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
@@ -394,6 +385,7 @@ export default function Hero({ dark }) {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 title={s.title}
+                aria-label={s.title}
                 style={{
                   width: "38px",
                   height: "38px",
@@ -427,7 +419,7 @@ export default function Hero({ dark }) {
                 marginLeft: "4px",
               }}
             >
-              edayavuzcontact@gmail.com
+              hemaharshitha2516@gmail.com
             </span>
           </motion.div>
         </div>
@@ -458,13 +450,14 @@ export default function Hero({ dark }) {
             />
 
             <div
+              className="portrait-frame"
               style={{
-                width: "280px",
-                height: "360px",
-                borderRadius: "140px 140px 0 0",
+                width: "320px",
+                height: "400px",
+                borderRadius: "32px",
                 overflow: "hidden",
                 background:
-                  "linear-gradient(var(--bg2),var(--bg2)) padding-box, linear-gradient(135deg,#8b5cf6,#ec4899,#06b6d4) border-box",
+                  "linear-gradient(var(--bg2),var(--bg2)) padding-box, linear-gradient(135deg,#b295e2,#dc99bc) border-box",
                 border: "2px solid transparent",
                 boxShadow: dark
                   ? "0 32px 80px rgba(0,0,0,0.5), 0 0 40px rgba(139,92,246,0.18)"
@@ -473,9 +466,9 @@ export default function Hero({ dark }) {
               }}
             >
               <img
-                src="img/portfolio pp-.png"
-                alt="Eda Yavuz"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                src="/img/hema-profile.jpg"
+                alt="Hema Harshitha Reddy Puli"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%" }}
               />
               <div
                 style={{
@@ -534,7 +527,8 @@ export default function Hero({ dark }) {
       <style>{`
         @media(max-width:900px){
           section#home > div[style*="grid-template-columns"]{grid-template-columns:1fr!important;padding:0 24px!important;gap:48px!important;}
-          section#home > div > div:last-child{display:none;}
+          section#home{padding:120px 0 100px!important;}
+          section#home > div[style*="grid-template-columns"] > div:last-child{display:flex;}
         }
       `}</style>
     </section>

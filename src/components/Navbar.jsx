@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const links = ["Home", "About", "Skills", "Projects", "Contact"];
+const links = ["Home", "About", "Education", "Skills", "Projects", "Contact"];
 
 export default function Navbar({ dark, toggleDark }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("Home");
 
@@ -23,13 +24,15 @@ export default function Navbar({ dark, toggleDark }) {
       ? "rgba(255,255,255,0.06)"
       : "rgba(0,0,0,0.06)"
     : "transparent";
-  const textColor = dark ? "rgba(237,236,240,0.45)" : "rgba(10,10,10,0.45)";
+  const textColor = dark ? "rgba(237,236,240,0.68)" : "rgba(10,10,10,0.68)";
   const activeColor = dark ? "#ffffff" : "#0a0a0a";
   const activeBg = dark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.06)";
   const hoverColor = dark ? "#ffffff" : "#0a0a0a";
 
   return (
     <motion.nav
+      className="site-nav"
+      aria-label="Main navigation"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -62,7 +65,7 @@ export default function Navbar({ dark, toggleDark }) {
             color: dark ? "#edecf0" : "#0a0a0a",
           }}
         >
-          eda
+          hema
           <span
             style={{
               background: "linear-gradient(135deg,#8b5cf6,#ec4899)",
@@ -70,12 +73,14 @@ export default function Navbar({ dark, toggleDark }) {
               WebkitTextFillColor: "transparent",
             }}
           >
-            dev
+            .
           </span>
         </span>
       </motion.div>
 
       <ul
+        id="nav-links"
+        className={menuOpen ? "nav-links is-open" : "nav-links"}
         style={{
           display: "flex",
           alignItems: "center",
@@ -88,7 +93,8 @@ export default function Navbar({ dark, toggleDark }) {
           <li key={link}>
             <motion.a
               href={`#${link.toLowerCase()}`}
-              onClick={() => setActive(link)}
+              onClick={() => { setActive(link); setMenuOpen(false); }}
+              aria-current={active === link ? "location" : undefined}
               whileHover={{ y: -1 }}
               style={{
                 display: "block",
@@ -123,6 +129,7 @@ export default function Navbar({ dark, toggleDark }) {
       </ul>
 
       <div
+        className="nav-actions"
         style={{
           display: "flex",
           gap: "10px",
@@ -131,6 +138,7 @@ export default function Navbar({ dark, toggleDark }) {
         }}
       >
         <motion.button
+          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
           onClick={toggleDark}
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
@@ -153,6 +161,11 @@ export default function Navbar({ dark, toggleDark }) {
         >
           {dark ? "☀️" : "🌙"}
         </motion.button>
+        <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="nav-links"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setMenuOpen((open) => !open)} onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false); }}>
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </div>
     </motion.nav>
   );

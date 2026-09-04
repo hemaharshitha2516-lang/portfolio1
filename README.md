@@ -1,16 +1,33 @@
-# React + Vite
+# Hema Harshitha - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for Hema Harshitha Reddy Puli, a second-year Computer Science student at QIS College of Engineering and Technology interested in software engineering, AI, and web development.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website is built with React, Vite, Tailwind CSS, CSS, and Framer Motion. These describe the website implementation; Hema’s personal skills and current learning are listed separately on the site.
 
-## React Compiler
+## Run Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+From this directory:
 
-## Expanding the ESLint configuration
+```sh
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```sh
+npm run lint
+npm run build
+npm run preview
+```
+
+## Content
+
+Home, About, Education, Skills, one Stack Game project, and Contact. Includes a responsive portrait, mobile navigation, and a persistent dark/light theme toggle.
+
+## Contact
+
+- Email: [hemaharshitha2516@gmail.com](mailto:hemaharshitha2516@gmail.com)
+- GitHub: [hemaharshitha2516-lang](https://github.com/hemaharshitha2516-lang)
+- LinkedIn: [Hema Harshitha Reddy Puli](https://www.linkedin.com/in/hema-harshitha-reddy-puli-446b67433/)
+- Location: Ongole, Andhra Pradesh, India

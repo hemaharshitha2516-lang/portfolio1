@@ -1,13 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function CustomCursor({ dark }) {
+export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  const dot1X = useMotionValue(-100);
-  const dot1Y = useMotionValue(-100);
-  const dot2X = useMotionValue(-100);
-  const dot2Y = useMotionValue(-100);
 
   const springConfig1 = { stiffness: 800, damping: 35, mass: 0.3 };
   const spring1X = useSpring(cursorX, springConfig1);
@@ -28,11 +24,11 @@ export default function CustomCursor({ dark }) {
     };
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, []);
+  }, [cursorX, cursorY]);
 
   return (
     <>
-      <motion.div
+      <motion.div className="custom-cursor"
         style={{
           position: "fixed",
           top: 0,
@@ -51,7 +47,7 @@ export default function CustomCursor({ dark }) {
         }}
       />
 
-      <motion.div
+      <motion.div className="custom-cursor"
         style={{
           position: "fixed",
           top: 0,
@@ -69,7 +65,7 @@ export default function CustomCursor({ dark }) {
         }}
       />
 
-      <motion.div
+      <motion.div className="custom-cursor"
         style={{
           position: "fixed",
           top: 0,
